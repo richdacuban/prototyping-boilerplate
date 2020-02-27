@@ -90,6 +90,14 @@ body {
   justify-content: space-around;
   align-items: center;
 }
+.iframeWrapper#bottomRow {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 5vh;
+}
 
 /* adIframe class is iframe loaded in index */
 .adIframe {
@@ -127,4 +135,10 @@ body {
 /* optInWrapper sibling to adImg which wraps optIn/MoreInfo button(s) */
 .optInWrapper {
   display: block;
+}
+
+@media only screen and (max-width: 768px) {
+  .optInWrapper h1 {
+    font-size: 1em;
+  }
 }

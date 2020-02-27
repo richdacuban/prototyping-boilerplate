@@ -1,8 +1,6 @@
-# Prototyping Boilerplate
+# TEC Opt-In ad assignment
 
-This is a quick alternative to either browser based IDEs or setting up a build system every time you want to experiment.
-
-It makes the assumption that you are using a modern browser which supports both ES Modules and CSS Custom Properties. If your prototype is a success, you can package those same modules using your build system of choice.
+This is a simple and quick demo project created for Thought and Expression Company to demo a simple session based system for allowing a user to opt-in to see ads that may otherwise be objectionable. This project uses only plain html, plain javascript and css styling. The internal "ads" are in iframes and communicate with the parent window via postMessage
 
 ## Minimal Requirements
 

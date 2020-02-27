@@ -20,32 +20,35 @@
         );
       }
 
-      parentWin.addEventListener('message', function(e) {
+      window.addEventListener('message', function(e) {
         let message = e.data;
 
         let elemToShow = document.querySelector('.adImg');
         let optControl = document.querySelector('.optInWrapper');
 
-        if (message.optIn === true) {
+        if (message === 'true') {
+          sessionStorage.setItem('optIn', true);
           elemToShow.style.display = 'block';
           optControl.style.display = 'none';
         } else {
+          sessionStorage.setItem('optIn', false);
           elemToShow.style.display = 'none';
           optControl.style.display = 'block';
         }
       });
 
       function checkParent() {
-        let sessSetting = parentWin.sessionStorage.getItem('optIn');
         let elemToShow = document.querySelector('.adImg');
         let optControl = document.querySelector('.optInWrapper');
 
-        if (sessSetting === 'true') {
-          elemToShow.style.display = 'block';
-          optControl.style.display = 'none';
-        } else {
+        if (!sessionStorage.getItem('optIn')) {
+          sessionStorage.setItem('optIn', false);
           elemToShow.style.display = 'none';
           optControl.style.display = 'block';
+        } else if (sessionStorage.getItem('optIn') === 'true') {
+          sessionStorage.setItem('optIn', true);
+          elemToShow.style.display = 'block';
+          optControl.style.display = 'none';
         }
       }
     </script>

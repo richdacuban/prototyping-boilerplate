@@ -13,13 +13,20 @@
           sessionStorage.setItem('optIn', false);
         }
       }
+
       window.addEventListener('message', function(e) {
         let message = e.data;
+        let iframeElem = document.getElementsByClassName('adIframe');
+
         sessionStorage.setItem('optIn', message.optIn);
-        console.log(
-          'session storage from parent: ',
-          sessionStorage.getItem('optIn')
-        );
+
+        for (i = 0; i < iframeElem.length; i++) {
+          let currIframe = iframeElem[i].contentWindow;
+          currIframe.postMessage(
+            sessionStorage.getItem('optIn'),
+            iframeElem[i].src
+          );
+        }
       });
     </script>
   </head>
@@ -30,19 +37,16 @@
           class="adIframe"
           scrolling="no"
           src="./html/exampleAd1.html"
-          onload="resizeIframe(this)"
         ></iframe>
         <iframe
           class="adIframe"
           scrolling="no"
           src="./html/exampleAd3.html"
-          onload="resizeIframe(this)"
         ></iframe>
         <iframe
           class="adIframe"
           scrolling="no"
           src="./html/exampleAd5.html"
-          onload="resizeIframe(this)"
         ></iframe>
       </div>
     </div>
@@ -68,13 +72,11 @@
             class="adIframe"
             scrolling="no"
             src="./html/exampleAd2.html"
-            onload="resizeIframe(this)"
           ></iframe>
           <iframe
             class="adIframe"
             scrolling="no"
             src="./html/exampleAd4.html"
-            onload="resizeIframe(this)"
           ></iframe>
         </div>
         <p>
@@ -90,18 +92,16 @@
           Cursus vitae congue mauris rhoncus aenean vel. Pulvinar sapien et
           ligula ullamcorper malesuada. Vitae tortor condimentum lacinia quis.
         </p>
-        <div class="iframeWrapper" id="row">
+        <div class="iframeWrapper" id="bottomRow">
           <iframe
             class="adIframe"
             scrolling="no"
             src="./html/exampleAd6.html"
-            onload="resizeIframe(this)"
           ></iframe>
           <iframe
             class="adIframe"
             scrolling="no"
             src="./html/exampleAd7.html"
-            onload="resizeIframe(this)"
           ></iframe>
         </div>
       </div>
@@ -110,10 +110,8 @@
       function resizeIframe(obj) {
         obj.style.height =
           obj.contentWindow.document.documentElement.scrollHeight + 'px';
-        console.log('obj.style.height', obj.style.height);
         obj.style.width =
           obj.contentWindow.document.documentElement.scrollWidth + 'px';
-        console.log('obj.style.width', obj.style.width);
       }
     </script>
   </body>
