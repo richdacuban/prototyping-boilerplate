@@ -3,7 +3,7 @@
  */
 
 :root {
-	--line-height-base: 1.5;
+  --line-height-base: 1.5;
 }
 
 /**
@@ -13,11 +13,11 @@
 *,
 *:after,
 *:before {
-	box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 html {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /**
@@ -25,5 +25,53 @@ html {
  */
 
 body {
-	line-height: var(--line-height-base);	
+  line-height: var(--line-height-base);
+}
+
+/* indexBody is <body> in index */
+.indexBody {
+}
+
+/* mainWrapper is <main> around all content in index  */
+.mainWrapper {
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+/* div in index that wraps iframe */
+.iframeWrapper {
+  position: relative;
+  overflow: hidden;
+  /* padding-top: 56.25%; */
+}
+
+/* adIframe class is iframe loaded in index */
+.adiframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* adBody is <body> inside iframe */
+.adBody {
+}
+
+/* iframeInnerWrapper is div inside of iframe but around all content */
+.iframeInnerWrapper {
+  max-width: 100vw;
+  max-height: 100vh;
+}
+.iframeInnerWrapper h1 {
+  font-size: 1em;
+}
+
+/* adImg is class for all ad IMG's inside iframes */
+.adImg {
+  height: auto;
+  /* max-height: 100%; */
+  /* width: 100%; */
+  max-width: 100%;
 }

@@ -29,15 +29,14 @@
       });
     </script>
   </head>
-  <body onload="setSession()">
-    <main>
+  <body class="indexBody" onload="setSession()">
+    <main class="mainWrapper">
       <h1>Opt-In Cannabis Ads</h1>
-
       <div class="iframeWrapper">
         <iframe
-          scrolling="no"
+          class="adIframe"
+          scrolling="yes"
           src="./html/exampleAd1.html"
-          onload="resizeIframe(this)"
         ></iframe>
       </div>
     </main>

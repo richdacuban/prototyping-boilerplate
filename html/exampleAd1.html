@@ -28,32 +28,7 @@
         // sessionStorage.setItem("optIn", message.adOptIn);
         // console.log('session storage from parent: ', sessionStorage.getItem("optIn"))
       });
-    </script>
-  </head>
-  <body onload="checkParent()">
-    <img
-      alt="cannabis-bert"
-      class="adImg"
-      src="../assets/cannabis-bert.gif"
-      style="visibility:hidden;"
-    />
-    <form>
-      <h1>Sender of postMessage</h1>
-      <div id="optInVal"></div>
-      <input
-        id="btnSendMessage"
-        onclick="sendMessage(true)"
-        type="button"
-        value="Opt-in"
-      />
-      <input
-        id="btnSendMessage"
-        onclick="sendMessage(false)"
-        type="button"
-        value="Opt-Out"
-      />
-    </form>
-    <script>
+
       function checkParent() {
         let sessSetting = parentWin.sessionStorage.getItem('optIn');
         let elemToShow = document.querySelector('.adImg');
@@ -69,5 +44,29 @@
         }
       }
     </script>
+  </head>
+  <body onload="checkParent()">
+    <div class="iframeInnerWrapper">
+      <img
+        alt="cannabis-bert"
+        class="adImg"
+        src="../assets/cannabis-bert.gif"
+        style="visibility:hidden;"
+      />
+      <h1>Ads for Adults Only</h1>
+      <div id="optInVal"></div>
+      <input
+        id="btnSendMessage"
+        onclick="sendMessage(true)"
+        type="button"
+        value="Opt-in"
+      />
+      <input
+        id="btnSendMessage"
+        onclick="sendMessage(false)"
+        type="button"
+        value="Opt-Out"
+      />
+    </div>
   </body>
 </html>
