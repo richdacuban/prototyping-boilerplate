@@ -11,8 +11,12 @@
       var parentWin = window.parent;
 
       function sendMessage(type) {
-        let msg = { optIn: type };
-        parentWin.postMessage(msg, parentWin);
+        try {
+          let msg = { optIn: type };
+          parentWin.postMessage(msg, parentWin);
+        } catch (error) {
+          console.log(error);
+        }
       }
       function moreInfo() {
         alert(

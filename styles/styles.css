@@ -96,7 +96,6 @@ body {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 5vh;
 }
 
 /* adIframe class is iframe loaded in index */
@@ -129,7 +128,7 @@ body {
   display: none;
   align-self: center;
 
-  object-fit: contain;
+  /* object-fit: contain; */
 }
 
 /* optInWrapper sibling to adImg which wraps optIn/MoreInfo button(s) */
