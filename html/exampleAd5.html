@@ -22,21 +22,17 @@
 
       parentWin.addEventListener('message', function(e) {
         let message = e.data;
-        // console.log("event message from parent from within child iframe", message)
+
         let elemToShow = document.querySelector('.adImg');
         let optControl = document.querySelector('.optInWrapper');
 
         if (message.optIn === true) {
-          // elemToShow.style.visibility = 'visible';
           elemToShow.style.display = 'block';
           optControl.style.display = 'none';
         } else {
-          // elemToShow.style.visibility = 'hidden';
           elemToShow.style.display = 'none';
           optControl.style.display = 'block';
         }
-        // sessionStorage.setItem("optIn", message.adOptIn);
-        // console.log('session storage from parent: ', sessionStorage.getItem("optIn"))
       });
 
       function checkParent() {
@@ -44,16 +40,10 @@
         let elemToShow = document.querySelector('.adImg');
         let optControl = document.querySelector('.optInWrapper');
 
-        // console.log('elemToShow in body script: ', elemToShow);
-
         if (sessSetting === 'true') {
-          // console.log('reading a true from par win');
-          // elemToShow.style.visibility = 'visible';
           elemToShow.style.display = 'block';
           optControl.style.display = 'none';
         } else {
-          // console.log('reading a false from parent window');
-          // elemToShow.style.visibility = 'hidden';
           elemToShow.style.display = 'none';
           optControl.style.display = 'block';
         }
