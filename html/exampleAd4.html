@@ -14,6 +14,11 @@
         let msg = { optIn: type };
         parentWin.postMessage(msg, parentWin);
       }
+      function moreInfo() {
+        alert(
+          'Cannabis advertising content on this page may be unsuitable for minors and/or illegal to display in your area. \nBy clikcing Opt-In you are certifying that you are over 18 and it is permitted to view Cannasbis related advertising content in your area.'
+        );
+      }
 
       parentWin.addEventListener('message', function(e) {
         let message = e.data;
@@ -59,7 +64,7 @@
     <div class="iframeInnerWrapper">
       <img alt="cannabis-still" class="adImg" src="../assets/cannabis.jpg" />
       <div class="optInWrapper">
-        <h1>Ads for Adults Only</h1>
+        <h1>Adults Only</h1>
         <input
           id="btnSendMessage"
           onclick="sendMessage(true)"
@@ -68,9 +73,9 @@
         />
         <input
           id="btnSendMessage"
-          onclick="sendMessage(false)"
+          onclick="moreInfo()"
           type="button"
-          value="Opt-Out"
+          value="More Info"
         />
       </div>
     </div>
