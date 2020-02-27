@@ -1,14 +1,46 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Prototyping Boilerplate</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link rel="stylesheet" href="/styles/styles.css">
-	</head>
-	<body>
-		<main>
-			<h1>Hello World!</h1>
-		</main>
-		<script type="module" src="/js/app.js"></script>
-	</body>
+  <head>
+    <title>TEC Ad Opt-In</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <script>
+      function resizeIframe(obj) {
+        obj.style.height =
+          obj.contentWindow.document.documentElement.scrollHeight + 'px';
+        obj.style.width =
+          obj.contentWindow.document.documentElement.scrollWidth + 'px';
+      }
+      function setSession() {
+        if (!sessionStorage.getItem('optIn')) {
+          sessionStorage.setItem('optIn', false);
+        }
+      }
+      window.addEventListener('message', function(e) {
+        let message = e.data;
+        sessionStorage.setItem('optIn', message.optIn);
+        console.log(
+          'session storage from parent: ',
+          sessionStorage.getItem('optIn')
+        );
+      });
+    </script>
+  </head>
+  <body onload="setSession()">
+    <main>
+      <h1>Opt-In Cannabis Ads</h1>
+
+      <div class="iframeWrapper">
+        <iframe
+          scrolling="no"
+          src="./html/exampleAd1.html"
+          onload="resizeIframe(this)"
+        ></iframe>
+      </div>
+    </main>
+    <!-- <script type="module" src="/js/app.js"></script> -->
+  </body>
 </html>

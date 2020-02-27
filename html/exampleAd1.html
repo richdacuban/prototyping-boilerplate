@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canna-Ad Example</title>
+    <meta content="Basic Ad Element for Display" name="description" />
+    <meta content="Richard Dominguez" name="author" />
+    <link href="../styles/styles.css" rel="stylesheet" />
+    <script>
+      var parentWin = window.parent;
+
+      function sendMessage(type) {
+        let msg = { optIn: type };
+        parentWin.postMessage(msg, parentWin);
+      }
+
+      parentWin.addEventListener('message', function(e) {
+        let message = e.data;
+        // console.log("event message from parent from within child iframe", message)
+        var elemToShow = document.querySelector('.adImg');
+
+        if (message.optIn === true) {
+          elemToShow.style.visibility = 'visible';
+        } else {
+          elemToShow.style.visibility = 'hidden';
+        }
+        // sessionStorage.setItem("optIn", message.adOptIn);
+        // console.log('session storage from parent: ', sessionStorage.getItem("optIn"))
+      });
+    </script>
+  </head>
+  <body onload="checkParent()">
+    <img
+      alt="cannabis-bert"
+      class="adImg"
+      src="../assets/cannabis-bert.gif"
+      style="visibility:hidden;"
+    />
+    <form>
+      <h1>Sender of postMessage</h1>
+      <div id="optInVal"></div>
+      <input
+        id="btnSendMessage"
+        onclick="sendMessage(true)"
+        type="button"
+        value="Opt-in"
+      />
+      <input
+        id="btnSendMessage"
+        onclick="sendMessage(false)"
+        type="button"
+        value="Opt-Out"
+      />
+    </form>
+    <script>
+      function checkParent() {
+        let sessSetting = parentWin.sessionStorage.getItem('optIn');
+        let elemToShow = document.querySelector('.adImg');
+
+        // console.log('elemToShow in body script: ', elemToShow);
+
+        if (sessSetting === 'true') {
+          // console.log('reading a true from par win');
+          elemToShow.style.visibility = 'visible';
+        } else {
+          // console.log('reading a false from parent window');
+          elemToShow.style.visibility = 'hidden';
+        }
+      }
+    </script>
+  </body>
+</html>
