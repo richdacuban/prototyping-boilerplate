@@ -8,12 +8,6 @@
     />
     <link rel="stylesheet" href="/styles/styles.css" />
     <script>
-      function resizeIframe(obj) {
-        obj.style.height =
-          obj.contentWindow.document.documentElement.scrollHeight + 'px';
-        obj.style.width =
-          obj.contentWindow.document.documentElement.scrollWidth + 'px';
-      }
       function setSession() {
         if (!sessionStorage.getItem('optIn')) {
           sessionStorage.setItem('optIn', false);
@@ -30,16 +24,77 @@
     </script>
   </head>
   <body class="indexBody" onload="setSession()">
-    <main class="mainWrapper">
-      <h1>Opt-In Cannabis Ads</h1>
-      <div class="iframeWrapper">
+    <div class="adCol">
+      <div class="iframeWrapper" id="col">
         <iframe
           class="adIframe"
-          scrolling="yes"
+          scrolling="no"
           src="./html/exampleAd1.html"
+          onload="resizeIframe(this)"
+        ></iframe>
+        <iframe
+          class="adIframe"
+          scrolling="no"
+          src="./html/exampleAd3.html"
+          onload="resizeIframe(this)"
         ></iframe>
       </div>
+    </div>
+    <main class="mainWrapper">
+      <h1>Opt-In Cannabis Ads</h1>
+      <div class="textWrapper">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Laoreet
+          suspendisse interdum consectetur libero. Laoreet non curabitur gravida
+          arcu ac tortor. Libero volutpat sed cras ornare arcu dui. Morbi leo
+          urna molestie at elementum. Suspendisse interdum consectetur libero id
+          faucibus nisl tincidunt eget nullam. Amet dictum sit amet justo donec
+          enim. Luctus accumsan tortor posuere ac. Ut aliquam purus sit amet
+          luctus venenatis. Lectus quam id leo in vitae turpis massa sed. Sed
+          egestas egestas fringilla phasellus. Sed arcu non odio euismod lacinia
+          at quis risus. Lectus nulla at volutpat diam ut venenatis tellus in
+          metus. Eget nunc lobortis mattis aliquam faucibus purus in massa.
+          Egestas quis ipsum suspendisse ultrices gravida dictum fusce ut.
+        </p>
+        <div class="iframeWrapper" id="row">
+          <iframe
+            class="adIframe"
+            scrolling="no"
+            src="./html/exampleAd2.html"
+            onload="resizeIframe(this)"
+          ></iframe>
+          <iframe
+            class="adIframe"
+            scrolling="no"
+            src="./html/exampleAd4.html"
+            onload="resizeIframe(this)"
+          ></iframe>
+        </div>
+        <p>
+          Malesuada bibendum arcu vitae elementum curabitur. Est ante in nibh
+          mauris cursus mattis molestie a. Imperdiet dui accumsan sit amet nulla
+          facilisi. Egestas fringilla phasellus faucibus scelerisque eleifend
+          donec pretium vulputate. Lectus sit amet est placerat. Nec nam aliquam
+          sem et tortor consequat. Enim blandit volutpat maecenas volutpat
+          blandit. Ipsum suspendisse ultrices gravida dictum fusce ut placerat
+          orci. Arcu dui vivamus arcu felis bibendum ut tristique et. Et leo
+          duis ut diam quam nulla porttitor massa. Amet purus gravida quis
+          blandit turpis cursus in. Cursus metus aliquam eleifend mi in nulla.
+          Cursus vitae congue mauris rhoncus aenean vel. Pulvinar sapien et
+          ligula ullamcorper malesuada. Vitae tortor condimentum lacinia quis.
+        </p>
+      </div>
     </main>
-    <!-- <script type="module" src="/js/app.js"></script> -->
+    <script>
+      function resizeIframe(obj) {
+        obj.style.height =
+          obj.contentWindow.document.documentElement.scrollHeight + 'px';
+        console.log('obj.style.height', obj.style.height);
+        obj.style.width =
+          obj.contentWindow.document.documentElement.scrollWidth + 'px';
+        console.log('obj.style.width', obj.style.width);
+      }
+    </script>
   </body>
 </html>
