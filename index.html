@@ -18,17 +18,31 @@
         let message = e.data;
         let iframeElem = document.getElementsByClassName('adIframe');
 
-        sessionStorage.setItem('optIn', message.optIn);
+        if (message.optIn === true) {
+          sessionStorage.setItem('optIn', message.optIn);
 
-        for (i = 0; i < iframeElem.length; i++) {
-          let currIframe = iframeElem[i].contentWindow;
-          try {
-            currIframe.postMessage(
-              sessionStorage.getItem('optIn'),
-              iframeElem[i].src
-            );
-          } catch (error) {
-            console.log(error);
+          for (i = 0; i < iframeElem.length; i++) {
+            let currIframe = iframeElem[i].contentWindow;
+            try {
+              currIframe.postMessage(
+                sessionStorage.getItem('optIn'),
+                iframeElem[i].src
+              );
+            } catch (error) {
+              console.log(error);
+            }
+          }
+        } else {
+          for (i = 0; i < iframeElem.length; i++) {
+            let currIframe = iframeElem[i].contentWindow;
+            try {
+              currIframe.postMessage(
+                sessionStorage.getItem('optIn'),
+                iframeElem[i].src
+              );
+            } catch (error) {
+              console.log(error);
+            }
           }
         }
       });

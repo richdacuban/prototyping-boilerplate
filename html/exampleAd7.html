@@ -11,11 +11,20 @@
       var parentWin = window.parent;
 
       function sendMessage(type) {
-        try {
-          let msg = { optIn: type };
-          parentWin.postMessage(msg, parentWin);
-        } catch (error) {
-          console.log(error);
+        if (type === true) {
+          try {
+            let msg = { optIn: type };
+            parentWin.postMessage(msg, parentWin);
+          } catch (error) {
+            console.log(error);
+          }
+        } else if (type === 'request') {
+          try {
+            let msg = { optIn: type };
+            parentWin.postMessage(msg, parentWin);
+          } catch (error) {
+            console.log(error);
+          }
         }
       }
       function moreInfo() {
@@ -31,29 +40,16 @@
         let optControl = document.querySelector('.optInWrapper');
 
         if (message === 'true') {
-          sessionStorage.setItem('optIn', true);
           elemToShow.style.display = 'block';
           optControl.style.display = 'none';
         } else {
-          sessionStorage.setItem('optIn', false);
           elemToShow.style.display = 'none';
           optControl.style.display = 'block';
         }
       });
 
       function checkParent() {
-        let elemToShow = document.querySelector('.adImg');
-        let optControl = document.querySelector('.optInWrapper');
-
-        if (!sessionStorage.getItem('optIn')) {
-          sessionStorage.setItem('optIn', false);
-          elemToShow.style.display = 'none';
-          optControl.style.display = 'block';
-        } else if (sessionStorage.getItem('optIn') === 'true') {
-          sessionStorage.setItem('optIn', true);
-          elemToShow.style.display = 'block';
-          optControl.style.display = 'none';
-        }
+        sendMessage('request');
       }
     </script>
   </head>
